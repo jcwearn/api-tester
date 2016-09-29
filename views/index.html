@@ -5,6 +5,9 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="stylesheets/materialize.css"  media="screen,projection"/>
+
+    <!--Import style.css for custom styling-->
+    <link type="text/css" rel="stylesheet" href="stylesheets/style.css"  media="screen,projection"/>
     
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -70,25 +73,36 @@
       </div>
 
       <div class="row">
-        <div class="card white">
-          <div class="card-content">
-            <span class="card-title">Headers</span>
-            <div class="row">
-              <form action="" onsubmit="return false">
-                <div class="col m6">
-                  <div class="input-field">
-                    <input id="key" type="text" tabindex="1" name="key" placeholder="key">
-                  </div>
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header text-align-center">Headers</div>
+            <div class="collapsible-body">
+                <div class="row">
+                  <form action="" onsubmit="return false">
+                    <div class="col m5 offset-m1">
+                      <div class="input-field">
+                        <input id="key" type="text" tabindex="1" name="key" placeholder="key">
+                      </div>
+                    </div>
+                    <div class="col m5">
+                      <div class="input-field">
+                        <input id="value" type="text" tabindex="1" name="value" placeholder="value">
+                      </div>
+                    </div>
+                    <div class="col m1" style="margin-top:15px">
+                      <a class="btn-floating btn-medium waves-effect waves-light grey"><i class="material-icons">add</i></a>
+                    </div>
+                  </form>
                 </div>
-                <div class="col m6">
-                  <div class="input-field">
-                    <input id="value" type="text" tabindex="1" name="value" placeholder="value">
-                  </div>
-                </div>
-              </form>
             </div>
-          </div>
-        </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Body</div>
+            <div class="collapsible-body">
+              <textarea id="body-text-area"></textarea>
+            </div>
+          </li>
+        </ul>
       </div>
       
       <div class="row">
@@ -106,6 +120,9 @@
     <script type="text/javascript">
       $(document).ready(function() {
         $('select').material_select();
+        $('.collapsible').collapsible({
+          accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });    
       });
     </script>
     <script type="text/javascript">
