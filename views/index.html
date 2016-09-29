@@ -19,7 +19,8 @@
         <div class="card-panel white" style="margin-top:20px">
           <div style="margin-bottom:0 !important;" id="search" class="search-box row scrollspy">
             <form action="" onsubmit="return false">
-              <div class="col m10"><div class="input-field">
+              <div class="col m10">
+                <div class="input-field">
                   <label for="api-route">Enter API to test</label>
                   <input id="api-route" type="text" tabindex="1" name="api-route" value="https://api.careerbuilder.com/" style="height:54px !important; font-size:14px">
                 </div>
@@ -30,10 +31,10 @@
               <div class="col m12">
                 <div class="row">
                   <div class="col m3 switch">
-                    <label>Staging<input type="checkbox" checked="true" name="environment" id="environment"><span class="lever"></span>Production</label>
+                    <label>Staging<input type="checkbox" checked="true" name="environment" id="environment" onclick="toggleEnvironment()"><span class="lever"></span>Production</label>
                   </div>
-                  <div class="input-field col m3">
-                    <select>                      
+                  <div class="input-field col m2">
+                    <select id="method">
                       <option value="GET">GET</option>
                       <option value="POST">POST</option>
                       <option value="PUT">PUT</option>
@@ -41,6 +42,25 @@
                       <option value="PATCH">PATCH</option>
                     </select>
                     <label>Method</label>
+                  </div>
+                  <div class="input-field col m2">
+                    <select id="content-type">
+                      <option value="application/json">JSON</option>
+                      <option value="application/xml">XML</option>
+                      <option value="application/x-www-form-urlencoded">FORM</option>
+                    </select>
+                    <label>Content-Type</label>
+                  </div>
+                  <div class="input-field col m2">
+                    <select id="accept">
+                      <option value="application/json">JSON</option>
+                      <option value="application/xml">XML</option>
+                    </select>
+                    <label>Accept</label>
+                  </div>
+                  <div class="input-field col m1">
+                    <label for="version">Version</label>
+                    <input id="version" type="text" tabindex="1" name="version" value="">
                   </div>
                 </div>
               </div>
@@ -52,11 +72,16 @@
       </div>
       <div class="row">
         <div class="card-panel white">
-          <h3>Sup</h3>
+          <div class="row">
+            <div class="col m12">
+              <label for="response-area">Response</label>
+              <pre id="response-area"></pre>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="javascripts/materialize.js"></script>
     <script type="text/javascript" src="javascripts/call_api.js"></script>
@@ -64,6 +89,18 @@
       $(document).ready(function() {
         $('select').material_select();
       });
+    </script>
+    <script type="text/javascript">
+      function toggleEnvironment() {
+        var current_url = $('input#api-route').val();
+        var updated_url;
+        if(current_url.indexOf('wwwtest.') >= 0) {
+          updated_url = current_url.replace('wwwtest.', '');
+        } else {
+          updated_url = current_url.replace('https://', 'https://wwwtest.');
+        }
+        $('input#api-route').val(updated_url);
+      }
     </script>
   </body>
 </html>
