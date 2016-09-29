@@ -89,7 +89,7 @@
                         <input id="value" type="text" tabindex="1" name="value" placeholder="value">
                       </div>
                     </div>
-                    <div class="col m1" style="margin-top:15px">
+                    <div class="col m1" style="margin-top:15px" id="header-button">
                       <a class="btn-floating btn-medium waves-effect waves-light grey"><i class="material-icons">add</i></a>
                     </div>
                   </form>
@@ -124,8 +124,6 @@
           accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
         });    
       });
-    </script>
-    <script type="text/javascript">
       function toggleEnvironment() {
         var current_url = $('input#api-route').val();
         var updated_url;
