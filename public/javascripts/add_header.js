@@ -9,18 +9,21 @@ function add_header() {
   }
 
   if(key && value) {
+    var cancel_button;    
     if (number_of_headers === 0) {
-      $("#header-plus-button").remove();
+      <!-- cancel_button = $("<div class=\"col m1\" style=\"margin-top:15px\"><a class=\"btn-floating btn-medium waves-effect waves-light grey\" id=\"header-cancel-button\"><i class=\"material-icons\">cancel</i></a></div>"); -->
+      $("#header-add-button").remove();
     } else {
-      $("#header-plus-button" + number_of_headers).remove();
+      <!-- cancel_button = $("<div class=\"col m1\" style=\"margin-top:15px\"><a class=\"btn-floating btn-medium waves-effect waves-light grey\" id=\"header-cancel-button" + number_of_headers + "\"><i class=\"material-icons\">cancel</i></a></div>"); -->
+      $("#header-add-button" + number_of_headers).remove();
     }
 
     number_of_headers = number_of_headers + 1;
 
-    var new_div = $("<div class=\"col m5 offset-m1\"><div class=\"input-field\"><input id=\"key" + number_of_headers +  "\" type=\"text\" tabindex=\"1\" name=\"key" + number_of_headers + "\" placeholder=\"key\"></div></div><div class=\"col m5\"><div class=\"input-field\"><input id=\"value" + number_of_headers + "\" type=\"text\" tabindex=\"1\" name=\"value" + number_of_headers + "\" placeholder=\"value\"></div></div><div class=\"col m1\" style=\"margin-top:15px\"><a class=\"btn-floating btn-medium waves-effect waves-light grey\" id=\"header-plus-button" + number_of_headers + "\"><i class=\"material-icons\">add</i></a></div>\"");
+    var new_div = $("<div class=\"col m5 offset-m1\"><div class=\"input-field\"><input id=\"key" + number_of_headers +  "\" type=\"text\" tabindex=\"1\" name=\"key" + number_of_headers + "\" placeholder=\"key\"></div></div><div class=\"col m5\"><div class=\"input-field\"><input id=\"value" + number_of_headers + "\" type=\"text\" tabindex=\"1\" name=\"value" + number_of_headers + "\" placeholder=\"value\"></div></div><div class=\"col m1\" style=\"margin-top:15px\"><a class=\"btn-floating btn-medium waves-effect waves-light grey\" id=\"header-add-button" + number_of_headers + "\"><i class=\"material-icons\">add</i></a></div>\"");
     
     $('#header-form').append(new_div);
-    $("#header-plus-button" + number_of_headers).on("click", function(){
+    $("#header-add-button" + number_of_headers).on("click", function(){
       add_header();
     });
   }
