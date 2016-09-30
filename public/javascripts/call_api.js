@@ -24,9 +24,10 @@ var callAPI = function() {
     contentType:"application/json; charset=utf-8",
     cache: false,
     success: function(data, textStatus, jqXHR) {
-      console.log(data);
-      var response = JSON.stringify(JSON.parse(data),null,2);
+      var response = JSON.stringify(JSON.parse(data.body),null,2);
+      var headers = JSON.stringify(data.headers,null,2);     
       $("pre#response-area").html((response));
+      $("pre#headers-area").html((headers));
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(jqXHR);
