@@ -4,8 +4,9 @@ var callAPI = function() {
   var contentType = $("select#content-type").val();
   var accept = $("select#accept").val();
   var version = $("input#version").val();
-  var headers = $("input#headers").val();
   var body = $("textarea#body").val();
+
+  var headers = getHeaders();
 
   var payload = {
     "url": url,
@@ -35,4 +36,30 @@ var callAPI = function() {
       console.log(errorThrown);
     }
   });
+};
+
+function getHeaders() {
+  var keys = [];
+  var values = [];
+  var headers = {};
+  $('[id^="key"]').each(function() {
+    var key = $(this).val();
+    if(key) {
+      keys.push(key);
+    }
+  });
+
+  $('[id^="value"]').each(function() {
+    var value = $(this).val();
+    if(value) {
+      values.push(value);
+    }
+  });
+
+  for(var i = 0; i < keys.length; i++) {
+    if(keys[i] && values[i])
+      headers[keys[i]] = values[i];
+  }
+  
+  return headers;
 }
