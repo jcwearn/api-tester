@@ -102,6 +102,19 @@
               <textarea id="body"></textarea>
             </div>
           </li>
+          <li>
+            <div class="collapsible-header">cURL</div>
+            <div class="collapsible-body">
+              <div class="row">              
+                <div class="col m2">
+                  <button onclick="generateCURL()" style="margin-top:15px; margin-left:15px" tabindex="2" class="waves-effect waves-light btn-large grey accent-2">Generate cURL</button>
+                </div>
+                <div class="col m10" style="margin-top:15px; margin-left:15px;">
+                  <code id="curl-area" ></code>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
       
@@ -118,8 +131,10 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="javascripts/materialize.js"></script>
-    <script type="text/javascript" src="javascripts/call_api.js"></script>
+    <script type="text/javascript" src="javascripts/grab_form_content.js"></script>
+    <script type="text/javascript" src="javascripts/generate_curl.js"></script>
     <script type="text/javascript" src="javascripts/add_header.js"></script>
+    <script type="text/javascript" src="javascripts/call_api.js"></script>
     <script type="text/javascript">
       var number_of_headers = 0;
       $(document).ready(function() {
