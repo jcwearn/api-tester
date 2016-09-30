@@ -77,29 +77,29 @@
           <li>
             <div class="collapsible-header text-align-center">Headers</div>
             <div class="collapsible-body">
-                <div class="row">
-                  <form action="" onsubmit="return false">
-                    <div class="col m5 offset-m1">
-                      <div class="input-field">
-                        <input id="key" type="text" tabindex="1" name="key" placeholder="key">
-                      </div>
+              <div class="row">
+                <form action="" onsubmit="return false" id="header-form">
+                  <div class="col m5 offset-m1">
+                    <div class="input-field">
+                      <input id="key" type="text" tabindex="1" name="key" placeholder="key">
                     </div>
-                    <div class="col m5">
-                      <div class="input-field">
-                        <input id="value" type="text" tabindex="1" name="value" placeholder="value">
-                      </div>
+                  </div>
+                  <div class="col m5">
+                    <div class="input-field">
+                      <input id="value" type="text" tabindex="1" name="value" placeholder="value">
                     </div>
-                    <div class="col m1" style="margin-top:15px" id="header-button">
-                      <a class="btn-floating btn-medium waves-effect waves-light grey"><i class="material-icons">add</i></a>
-                    </div>
-                  </form>
-                </div>
+                  </div>
+                  <div class="col m1" style="margin-top:15px">
+                    <a class="btn-floating btn-medium waves-effect waves-light grey" id="header-plus-button"><i class="material-icons">add</i></a>
+                  </div>
+                </form>
+              </div>
             </div>
           </li>
           <li>
             <div class="collapsible-header">Body</div>
             <div class="collapsible-body">
-              <textarea id="body-text-area"></textarea>
+              <textarea id="body"></textarea>
             </div>
           </li>
         </ul>
@@ -109,6 +109,8 @@
         <div class="card-panel white">
           <label for="response-area">Response</label>
           <pre id="response-area"></pre>
+          <label for="headers-area">Headers</label>
+          <pre id="headers-area"></pre>
         </div>
       </div>
 
@@ -117,12 +119,22 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="javascripts/materialize.js"></script>
     <script type="text/javascript" src="javascripts/call_api.js"></script>
+    <script type="text/javascript" src="javascripts/add_header.js"></script>
     <script type="text/javascript">
+      var number_of_headers = 0;
       $(document).ready(function() {
         $('select').material_select();
         $('.collapsible').collapsible({
           accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
         });    
+      });
+
+      $("#header-plus-button").click(function() {
+        add_header();
+      });
+      
+      $("#header-plus-button" + number_of_headers).on("click", function(){
+        add_header();
       });
       function toggleEnvironment() {
         var current_url = $('input#api-route').val();
