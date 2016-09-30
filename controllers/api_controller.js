@@ -6,8 +6,7 @@ var APIController = function() {};
 APIController.prototype.callAPI = function(api_params, callback) {
   var headers = {
     "accept": api_params.accept,
-    "content-type": api_params.contentType,
-    "authorization": ""
+    "content-type": api_params.contentType
   };
 
   if(api_params.headers) {
