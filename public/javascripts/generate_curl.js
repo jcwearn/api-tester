@@ -15,7 +15,10 @@ var generateCURL = function() {
   }
 
   if (headers) {
-    
+    var keys = Object.keys(headers);
+    keys.forEach(function(key) {
+      cURL += "-H \"" + key + ":" + headers[key] + "\" ";
+    });
   }
 
   if (body) {
